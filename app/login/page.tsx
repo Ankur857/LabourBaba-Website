@@ -1,7 +1,14 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 import { Globe, ChevronDown, ArrowRight } from "lucide-react";
+
+import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 
 export default function LoginPage() {
+    const router = useRouter();
     return (
         <div className="min-h-screen bg-[#f5f6f8] flex flex-col items-center justify-center px-5">
             {/* Logo Section */}
@@ -52,7 +59,7 @@ export default function LoginPage() {
                     </div>
 
                     {/* OTP Button */}
-                    <button className="w-full h-16 rounded-full bg-orange-500 hover:bg-orange-600 transition text-white text-2xl font-semibold flex items-center justify-center gap-2 shadow-lg">
+                    <button className="w-full h-16 rounded-full bg-orange-500 hover:bg-orange-600 transition text-white text-2xl font-semibold flex items-center justify-center gap-2 shadow-lg" onClick={() => router.push("/otp")}>
                         Get OTP
                         <ArrowRight size={24} />
                     </button>
