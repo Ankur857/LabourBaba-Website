@@ -66,7 +66,7 @@ export default function LoginPage() {
 
                     {/* Signup */}
                     <div className="text-center mt-8">
-                        <button className="text-[#006d8f] text-lg font-medium">
+                        <button className="text-[#006d8f] text-lg font-medium" onClick={() => router.push("/signup")}>
                             New here? Create Account
                         </button>
                     </div>

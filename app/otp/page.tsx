@@ -43,9 +43,16 @@ export default function OtpPage() {
   return (
     <main className="min-h-screen bg-[#F4F6F8]">
       {/* Mobile Container */}
-      <div className="w-full max-w-md mx-auto min-h-screen flex flex-col">
+      <div className="relative w-full max-w-md mx-auto min-h-screen flex flex-col overflow-hidden">
+
+        {/* Background Glow */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500/20 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-cyan-400/20 blur-[120px] rounded-full pointer-events-none" />
+
+
         {/* Header */}
-        <header className="h-16 bg-white shadow-sm flex items-center px-4">
+        <header className="relative z-10 h-16 bg-white shadow-sm flex items-center px-4">
           <button onClick={() => router.back()}>
             <ArrowLeft
               size={24}
@@ -53,13 +60,13 @@ export default function OtpPage() {
             />
           </button>
 
-          <h1 className="ml-4 text-xl font-medium text-[#FF6B00]">
+          <h1 className="ml-4 text-2xl font-bold text-[#FF6B00]">
             Verification
           </h1>
         </header>
 
         {/* Content */}
-        <div className="flex-1 px-6 flex flex-col items-center">
+        <div className="relative z-10 flex-1 px-6 flex flex-col items-center">
           {/* Logo */}
           <div className="mt-10 text-center">
             <Image
@@ -169,7 +176,7 @@ export default function OtpPage() {
         </div>
 
         {/* Footer */}
-        <div className="px-6 pb-6 mt-auto">
+        <div className="relative z-10 px-6 pb-6 mt-auto">
           <p className="text-center text-xs text-[#98A2B3] leading-6">
             By continuing, you agree to our Terms of
             Service
