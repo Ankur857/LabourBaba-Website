@@ -1,0 +1,236 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  Bookmark,
+  History,
+  Star,
+  HeadphonesIcon,
+  ChevronRight,
+  LogOut,
+  Phone,
+  Pencil,
+} from "lucide-react";
+
+import TopNavbar from "@/components/TopNavbar";
+import BottomNav from "@/components/BottomNav";
+
+const menuItems = [
+  {
+    title: "Saved Locations",
+    subtitle: "Manage home, work & sites",
+    icon: Bookmark,
+  },
+  {
+    title: "Request History",
+    subtitle: "View past labour bookings",
+    icon: History,
+  },
+  {
+    title: "Reviews Given",
+    subtitle: "Ratings you've provided",
+    icon: Star,
+  },
+  {
+    title: "Help & Support",
+    subtitle: "FAQs & Customer Service",
+    icon: HeadphonesIcon,
+  },
+];
+
+export default function ProfilePage() {
+  return (
+    <main className="min-h-screen bg-[#F8F9FB] pb-28 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400/10 blur-[120px] rounded-full" />
+
+      <div className="absolute bottom-20 left-0 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
+
+      <TopNavbar />
+
+      <section className="max-w-md mx-auto px-4 pt-24">
+        {/* Profile Card */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          className="
+            bg-white
+            rounded-3xl
+            border
+            border-[#E2BFB0]
+            shadow-lg
+            p-6
+            text-center
+          "
+        >
+          <div className="relative inline-block">
+            <div
+              className="
+                w-28
+                h-28
+                rounded-full
+                bg-[#FF6B00]
+                text-white
+                flex
+                items-center
+                justify-center
+                text-5xl
+                shadow-lg
+              "
+            >
+              JD
+            </div>
+
+            <button
+              className="
+                absolute
+                bottom-0
+                right-0
+                w-10
+                h-10
+                rounded-full
+                bg-[#FF6B00]
+                text-white
+                flex
+                items-center
+                justify-center
+                shadow-md
+              "
+            >
+              <Pencil size={16} />
+            </button>
+          </div>
+
+          <h2 className="mt-5 text-4xl font-bold text-[#1F2937]">
+            John Doe
+          </h2>
+
+          <div className="mt-2 flex items-center justify-center gap-2 text-[#5F4B42]">
+            <Phone size={16} />
+            <span>+91 98765 43210</span>
+          </div>
+        </motion.div>
+
+        {/* Menu Cards */}
+        <div className="mt-8 space-y-4">
+          {menuItems.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <motion.button
+                key={item.title}
+                initial={{
+                  opacity: 0,
+                  x: -20,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  delay: index * 0.1,
+                }}
+                whileHover={{
+                  y: -3,
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+                className="
+                  w-full
+                  bg-white
+                  border
+                  border-[#E2BFB0]
+                  rounded-2xl
+                  shadow-sm
+                  p-4
+                  flex
+                  items-center
+                  justify-between
+                  hover:shadow-md
+                  transition-all
+                "
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className="
+                      w-12
+                      h-12
+                      rounded-full
+                      bg-[#EEF2FF]
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    <Icon
+                      size={22}
+                      className="text-[#64748B]"
+                    />
+                  </div>
+
+                  <div className="text-left">
+                    <h3 className="text-2xl font-semibold text-[#1F2937]">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-[#6B7280]">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <ChevronRight
+                  size={22}
+                  className="text-[#5F4B42]"
+                />
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* Divider */}
+        <div className="my-8 border-t border-[#E2BFB0]" />
+
+        {/* Logout */}
+        <motion.button
+          whileHover={{
+            y: -3,
+          }}
+          whileTap={{
+            scale: 0.98,
+          }}
+          className="
+            w-full
+            h-16
+            rounded-full
+            border-2
+            border-[#FF6B00]
+            bg-white
+            text-[#FF6B00]
+            font-semibold
+            text-lg
+            flex
+            items-center
+            justify-center
+            gap-3
+            shadow-sm
+            hover:bg-orange-50
+            transition-all
+          "
+        >
+          <LogOut size={20} />
+          Logout
+        </motion.button>
+      </section>
+
+      <BottomNav />
+    </main>
+  );
+}

@@ -160,6 +160,7 @@ export default function SignupPage() {
               hover:bg-orange-600
               transition
             "
+                        onClick={() => router.push("/otp")}
                         >
                             Create Account
                             <ArrowRight size={22} />

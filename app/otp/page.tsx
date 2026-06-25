@@ -169,6 +169,7 @@ export default function OtpPage() {
               hover:bg-orange-600
               transition
             "
+            onClick={() => router.replace("/Home")}
           >
             Verify & Proceed
             <ArrowRight size={22} />
