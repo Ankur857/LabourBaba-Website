@@ -16,7 +16,7 @@ export default function ScheduleSelector() {
     <div className="space-y-5">
 
       {/* Heading */}
-      <h2 className="text-[34px] font-bold text-[#1F2937]">
+      <h2 className="text-[24px] font-bold text-[#1F2937]">
         When do you need them?
       </h2>
 
