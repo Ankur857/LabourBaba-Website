@@ -10,7 +10,7 @@ export default function LoadingSpinner({
   message = "Loading Map...",
 }: LoadingSpinnerProps) {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[500px] rounded-3xl bg-white border border-[#E2BFB0] shadow-lg">
+    <div className="flex flex-col items-center justify-center w-full h-125 rounded-3xl bg-white border border-[#E2BFB0] shadow-lg">
 
       {/* Icon */}
       <div className="relative">
