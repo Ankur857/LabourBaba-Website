@@ -58,7 +58,7 @@ export default function LocationCard() {
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
           <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-            <LocateFixed className="text-orange-500" />
+            <LocateFixed className="text-[#FF5404]" />
           </div>
 
           <div>
@@ -91,7 +91,7 @@ export default function LocationCard() {
             items-center
             justify-center
             gap-2
-            hover:bg-orange-600
+            hover:bg-[#FF5404]
             transition
           "
         >

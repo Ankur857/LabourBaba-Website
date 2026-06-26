@@ -19,7 +19,7 @@ const notifications = [
     title: "Worker Accepted",
     time: "2m ago",
     icon: Check,
-    color: "bg-orange-500",
+    color: "bg-[#FF5404]",
     description:
       "Raju has accepted your plumbing request and is preparing to head out.",
     action: "View details",
@@ -29,7 +29,7 @@ const notifications = [
     title: "Worker Arriving",
     time: "15m ago",
     icon: Car,
-    color: "bg-orange-500",
+    color: "bg-[#FF5404]",
     description:
       "Suresh (Electrician) is arriving in approximately 5 minutes.",
     highlight: true,
@@ -39,7 +39,7 @@ const notifications = [
     title: "Review Request",
     time: "Yesterday",
     icon: Star,
-    color: "bg-orange-500",
+    color: "bg-[#FF5404]",
     description:
       "Your carpentry job with Amit was completed. How was the service?",
     review: true,
@@ -102,7 +102,7 @@ export default function AlertsPage() {
                   overflow-hidden
                   ${
                     item.highlight
-                      ? "border-l-[5px] border-l-[#FF6B00]"
+                      ? "border-l-[5px] border-l-[#FF5404]"
                       : ""
                   }
                 `}
@@ -148,7 +148,7 @@ export default function AlertsPage() {
                         <button
                           className="
                             mt-4
-                            text-[#FF6B00]
+                            text-[#FF5404]
                             font-medium
                             hover:underline
                           "

@@ -83,7 +83,7 @@ export default function ProfilePage() {
                 w-28
                 h-28
                 rounded-full
-                bg-[#FF6B00]
+                bg-[#FF5404]
                 text-white
                 flex
                 items-center
@@ -103,7 +103,7 @@ export default function ProfilePage() {
                 w-10
                 h-10
                 rounded-full
-                bg-[#FF6B00]
+                bg-[#FF5404]
                 text-white
                 flex
                 items-center
@@ -220,9 +220,9 @@ export default function ProfilePage() {
             h-16
             rounded-full
             border-2
-            border-[#FF6B00]
+            border-[#FF5404]
             bg-white
-            text-[#FF6B00]
+            text-[#FF5404]
             font-semibold
             text-lg
             flex

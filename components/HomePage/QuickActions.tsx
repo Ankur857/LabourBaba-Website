@@ -31,7 +31,7 @@ export default function QuickActions() {
             onClick={() => router.push(item.href)}
           >
             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center">
-              <Icon className="text-orange-500" />
+              <Icon className="text-[#FF5404]" />
             </div>
 
             <p className="mt-4 font-medium">

@@ -21,11 +21,11 @@ export default function CommonHeader({
         >
           <ArrowLeft
             size={24}
-            className="text-[#FF6B00]"
+            className="text-[#FF5404]"
           />
         </button>
 
-        <h1 className="flex-1 text-center text-3xl font-bold text-[#FF6B00] pr-8">
+        <h1 className="flex-1 text-center text-3xl font-bold text-[#FF5404] pr-8">
           {title}
         </h1>
       </div>

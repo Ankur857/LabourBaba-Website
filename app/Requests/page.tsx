@@ -40,7 +40,7 @@ export default function RequestsPage() {
                 flex-1
                 py-3
                 rounded-xl
-                bg-[#FF6B00]
+                bg-[#FF5404]
                 text-white
                 font-semibold
                 transition-all
@@ -54,7 +54,7 @@ export default function RequestsPage() {
                 flex-1
                 py-3
                 text-[#5F4B42]
-                hover:text-[#FF6B00]
+                hover:text-[#FF5404]
                 transition
               "
             >
@@ -66,7 +66,7 @@ export default function RequestsPage() {
                 flex-1
                 py-3
                 text-[#5F4B42]
-                hover:text-[#FF6B00]
+                hover:text-[#FF5404]
                 transition
               "
             >
@@ -95,7 +95,7 @@ export default function RequestsPage() {
         >
           <div className="flex">
             {/* Left Orange Strip */}
-            <div className="w-2 bg-[#FF6B00]" />
+            <div className="w-2 bg-[#FF5404]" />
 
             <div className="flex-1 p-5">
               {/* Top */}
@@ -125,7 +125,7 @@ export default function RequestsPage() {
                 </div>
 
                 <div className="text-right">
-                  <h3 className="text-4xl font-bold text-[#FF6B00]">
+                  <h3 className="text-4xl font-bold text-[#FF5404]">
                     ₹850
                   </h3>
 
@@ -151,7 +151,7 @@ export default function RequestsPage() {
                     py-1
                     rounded-full
                     bg-orange-50
-                    text-[#FF6B00]
+                    text-[#FF5404]
                     text-sm
                     font-medium
                   "
@@ -189,10 +189,10 @@ export default function RequestsPage() {
                       flex-1
                       h-12
                       rounded-full
-                      bg-[#FF6B00]
+                      bg-[#FF5404]
                       text-white
                       font-semibold
-                      hover:bg-orange-600
+                      hover:bg-[#FF5404]
                       transition-all
                     "
                   >

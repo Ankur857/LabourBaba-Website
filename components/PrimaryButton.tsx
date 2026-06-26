@@ -33,7 +33,7 @@ export default function PrimaryButton({
         ${fullWidth ? "w-full" : ""}
         h-16
         rounded-2xl
-        bg-[#FF6B00]
+        bg-[#FF5404]
         text-white
         text-xl
         font-semibold

@@ -1,6 +1,6 @@
 export default function WorkerTrackingCard() {
   return (
-    <div className="bg-white border-2 border-orange-500 rounded-3xl p-4">
+    <div className="bg-white border border-[#FF5404] rounded-3xl p-4">
       <div className="flex justify-between">
         <div className="flex gap-3">
           <img
@@ -13,7 +13,7 @@ export default function WorkerTrackingCard() {
               Rajesh M. is arriving
             </h3>
 
-            <p className="text-orange-500 text-sm">
+            <p className="text-[#FF5404] text-sm">
               ETA: 12 mins • Electrician
             </p>
           </div>
@@ -24,7 +24,7 @@ export default function WorkerTrackingCard() {
 
       <div className="mt-6 flex items-center justify-between text-sm">
         <span>Booked</span>
-        <span className="text-orange-500 font-semibold">
+        <span className="text-[#FF5404] font-semibold">
           On the way
         </span>
         <span>Arrived</span>

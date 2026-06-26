@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 
 import TopNavbar from "@/components/TopNavbar";
-import GreetingSection from "@/components/GreetingSection";
-import LocationCard from "@/components/LocationCard";
-import PromoBanner from "@/components/PromoBanner";
-import QuickActions from "@/components/QuickActions";
-import WorkerTrackingCard from "@/components/WorkerTrackingCard";
-import TrustSection from "@/components/TrustSection";
-import ReferralCard from "@/components/ReferralCard";
+import GreetingSection from "@/components/HomePage/GreetingSection";
+import LocationCard from "@/components/HomePage/LocationCard";
+import PromoBanner from "@/components/HomePage/PromoBanner";
+import QuickActions from "@/components/HomePage/QuickActions";
+import WorkerTrackingCard from "@/components/HomePage/WorkerTrackingCard";
+import TrustSection from "@/components/HomePage/TrustSection";
+import ReferralCard from "@/components/HomePage/ReferralCard";
 import BottomNav from "@/components/BottomNav";
 
 const containerVariants = {

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import CommonHeader from "@/components/CommonHeader";
 import ServiceSelector from "@/components/ServiceSelector";
 import OfferInput from "@/components/OfferInput";
-import LocationCard from "@/components/LocationCard";
+import LocationCard from "@/components/HomePage/LocationCard";
 import ScheduleSelector from "@/components/ScheduleSelector";
 import PrimaryButton from "@/components/PrimaryButton";
 

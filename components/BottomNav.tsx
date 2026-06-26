@@ -89,7 +89,7 @@ export default function BottomNav() {
                   duration-300
                   ${
                     isActive
-                      ? "bg-[#FF6B00] rounded-full"
+                      ? "bg-[#FF5404] rounded-full"
                       : ""
                   }
                 `}
@@ -113,7 +113,7 @@ export default function BottomNav() {
                   font-medium
                   ${
                     isActive
-                      ? "text-[#FF6B00]"
+                      ? "text-[#FF5404]"
                       : "text-[#475569]"
                   }
                 `}

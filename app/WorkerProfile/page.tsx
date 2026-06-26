@@ -34,7 +34,7 @@ export default function WorkerProfilePage() {
 
           <section className="relative rounded-3xl border border-orange-200 bg-white p-8 shadow-sm">
 
-            <div className="absolute right-0 top-0 flex items-center gap-2 rounded-bl-2xl rounded-tr-3xl bg-[#FF6B00] px-5 py-2 text-sm font-semibold text-white">
+            <div className="absolute right-0 top-0 flex items-center gap-2 rounded-bl-2xl rounded-tr-3xl bg-[#FF5404] px-5 py-2 text-sm font-semibold text-white">
               <Zap size={14} />
               Arrives in 15m
             </div>

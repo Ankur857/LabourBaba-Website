@@ -30,7 +30,7 @@ export default function ScheduleSelector() {
           }}
           className={`flex-1 h-14 rounded-xl flex items-center justify-center gap-2 font-medium transition-all duration-300 ${
             selectedOption === "Now"
-              ? "bg-white shadow text-[#FF6B00]"
+              ? "bg-white shadow text-[#FF5404]"
               : "text-gray-600"
           }`}
         >
@@ -42,7 +42,7 @@ export default function ScheduleSelector() {
           onClick={() => setSelectedOption("Later")}
           className={`flex-1 h-14 rounded-xl flex items-center justify-center gap-2 font-medium transition-all duration-300 ${
             selectedOption === "Later"
-              ? "bg-white shadow text-[#FF6B00]"
+              ? "bg-white shadow text-[#FF5404]"
               : "text-gray-600"
           }`}
         >
@@ -66,8 +66,8 @@ export default function ScheduleSelector() {
               onClick={() => setSelectedDay("Tomorrow")}
               className={`w-full rounded-2xl border p-4 text-left transition-all ${
                 selectedDay === "Tomorrow"
-                  ? "border-[#FF6B00] bg-orange-50"
-                  : "border-[#E2BFB0] hover:border-[#FF6B00]"
+                  ? "border-[#FF5404] bg-orange-50"
+                  : "border-[#E2BFB0] hover:border-[#FF5404]"
               }`}
             >
               <h3 className="font-semibold text-lg">
@@ -84,8 +84,8 @@ export default function ScheduleSelector() {
               onClick={() => setSelectedDay("Day After Tomorrow")}
               className={`w-full rounded-2xl border p-4 text-left transition-all ${
                 selectedDay === "Day After Tomorrow"
-                  ? "border-[#FF6B00] bg-orange-50"
-                  : "border-[#E2BFB0] hover:border-[#FF6B00]"
+                  ? "border-[#FF5404] bg-orange-50"
+                  : "border-[#E2BFB0] hover:border-[#FF5404]"
               }`}
             >
               <h3 className="font-semibold text-lg">

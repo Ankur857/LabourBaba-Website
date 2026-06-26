@@ -28,11 +28,11 @@ export default function SignupPage() {
                     <button onClick={() => router.back()}>
                         <ArrowLeft
                             size={24}
-                            className="text-[#FF6B00]"
+                            className="text-[#FF5404]"
                         />
                     </button>
 
-                    <h1 className="ml-4 text-2xl font-bold text-[#FF6B00]">
+                    <h1 className="ml-4 text-2xl font-bold text-[#FF5404]">
                         Create Account
                     </h1>
                 </header>
@@ -147,7 +147,7 @@ export default function SignupPage() {
                             className="
               w-full
               h-14
-              bg-[#FF6B00]
+              bg-[#FF5404]
               rounded-xl
               text-white
               text-xl
