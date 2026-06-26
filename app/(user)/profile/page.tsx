@@ -21,38 +21,38 @@ import BottomNav from "@/components/BottomNav";
 const menuItems = [
   {
     title: "Saved Locations",
-    href: "/SavedLocations",
+    href: "/location",
     subtitle: "Manage home, work & sites",
     icon: Bookmark,
   },
   {
     title: "Request History",
-    href: "/Requests",
+    href: "/requests",
     subtitle: "View past labour bookings",
     icon: History,
   },
   {
     title: "Reviews Given",
-    href: "/ReviewsGiven",
+    href: "/reviews",
     subtitle: "Ratings you've provided",
     icon: Star,
   },
   {
     title: "Help & Support",
-    href: "/HelpAndSupport",
+    href: "/help",
     subtitle: "FAQs & Customer Service",
     icon: HeadphonesIcon,
   },
 ];
 
 export default function ProfilePage() {
-    const router = useRouter();
+  const router = useRouter();
   return (
-    <main className="min-h-screen bg-[#F8F9FB] pb-26 relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8F9FB] pb-24 relative overflow-hidden">
       {/* Background Glow */}
       {/* <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400/10 blur-[120px] rounded-full" /> */}
 
-      {/* <div className="absolute bottom-20 left-0 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" /> */}
+      {/* <div className="absolute bottom-40 left-0 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" /> */}
 
       <TopNavbar />
 
@@ -115,11 +115,11 @@ export default function ProfilePage() {
             </button>
           </div>
 
-          <h2 className="mt-3 text-4xl font-bold text-[#1F2937]">
+          <h2 className="mt-3 text-3xl font-bold text-[#1F2937]">
             John Doe
           </h2>
 
-          <div className="mt-1.5 flex items-center justify-center gap-2 text-[#5F4B42]">
+          <div className="mt-1.5 flex items-center justify-center gap-2 text-[#6B7280]">
             <Phone size={16} />
             <span>+91 98765 43210</span>
           </div>
@@ -180,12 +180,12 @@ export default function ProfilePage() {
                   >
                     <Icon
                       size={18}
-                      className="text-[#64748B]"
+                      className="text-[#5F6C8D]"
                     />
                   </div>
 
                   <div className="text-left">
-                    <h3 className="text-xl font-bold text-[#1F2937]">
+                    <h3 className="text-xl font-semibold text-[#1F2937]">
                       {item.title}
                     </h3>
 
@@ -197,7 +197,7 @@ export default function ProfilePage() {
 
                 <ChevronRight
                   size={22}
-                  className="text-[#5F4B42]"
+                  className="text-[#6B7280]"
                 />
               </motion.button>
             );

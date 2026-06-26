@@ -40,7 +40,7 @@ const reviews = [
 
 export default function ReviewsPage() {
   return (
-    <main className="min-h-screen bg-[#F8F9FB] pb-28 relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8F9FB] pb-24 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400/10 blur-[120px] rounded-full" />
 
@@ -54,11 +54,11 @@ export default function ReviewsPage() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-[38px] font-bold text-[#1F2937]">
+          <h1 className="text-3xl font-bold text-[#1F2937]">
             Your Feedback History
           </h1>
 
-          <p className="mt-3 text-[#5F4B42] text-[18px] leading-8">
+          <p className="mt-3 text-[#6B7280] text-[18px] leading-8">
             Here are the reviews you've left for workers.
             Your feedback helps maintain our high-quality
             community.

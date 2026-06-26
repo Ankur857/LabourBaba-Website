@@ -26,7 +26,7 @@ const quickActions = [
   { title: "Book Now", icon: Zap },
   { title: "Schedule", icon: Calendar },
   { title: "Emergency", icon: AlertTriangle, danger: true },
-  { title: "Repeat Prev.", icon: History },
+  { title: "Repeat Prev", icon: History },
 ];
 
 const stats = [
@@ -67,7 +67,7 @@ export default function HomePage() {
 
       <section className="max-w-md mx-auto px-4 pt-20 relative z-10">
         {/* Hero: greeting + weather + location combined */}
-        <GreetingSection/>
+        <GreetingSection />
 
         {/* Promo Carousel — swipeable */}
         <div className="mt-4">
@@ -153,7 +153,7 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
                   whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileTap={{ scale: 0.98 }}
                   className="bg-white border border-[#EFE2DC] rounded-2xl shadow-sm px-4 py-3.5 flex items-center gap-2.5 hover:shadow-md transition-shadow shrink-0"
                 >
                   <div
@@ -253,7 +253,7 @@ export default function HomePage() {
           className="mt-5"
         >
           <p className="flex items-center gap-1.5 text-sm font-semibold text-[#1F2937] mb-2.5 px-1">
-            <ShieldCheck size={16} className="text-[#5B5FC7]" />
+            <ShieldCheck size={16} className="text-[#5F6C8D]" />
             Trust & Safety Guaranteed
           </p>
 
@@ -264,12 +264,12 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + i * 0.08 }}
-                className="bg-[#EEF1FF] rounded-xl py-3 text-center"
+                className="bg-[#EEF2FF] rounded-xl py-3 text-center"
               >
                 <p className="text-base font-bold text-[#3B3F75]">
                   {stat.value}
                 </p>
-                <p className="text-[9.5px] text-[#5B5FC7] leading-tight mt-0.5 px-1">
+                <p className="text-[9.5px] text-[#5F6C8D] leading-tight mt-0.5 px-1">
                   {stat.label}
                 </p>
               </motion.div>

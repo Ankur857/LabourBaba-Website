@@ -8,26 +8,26 @@ import { motion } from "framer-motion";
 const navItems = [
   {
     label: "Home",
-    href: "/Home",
+    href: "/home",
     activeIcon: "/HomeIcon.svg",
     inactiveIcon: "/HomeIcon2.svg",
   },
   {
     label: "Requests",
-    href: "/Requests",
+    href: "/requests",
     activeIcon: "/Requests.svg",
     inactiveIcon: "/Requests2.svg",
   },
   {
     label: "Alerts",
-    href: "/Alerts",
+    href: "/alerts",
     activeIcon: "/NotificationIcon.svg",
     inactiveIcon: "/NotificationIcon2.svg",
     hasNotification: true,
   },
   {
     label: "Profile",
-    href: "/Profile",
+    href: "/profile",
     activeIcon: "/ProfileIcon.svg",
     inactiveIcon: "/ProfileIcon2.svg",
   },

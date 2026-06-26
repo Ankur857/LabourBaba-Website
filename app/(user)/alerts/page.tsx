@@ -55,7 +55,7 @@ export default function AlertsPage() {
       <section className="max-w-md mx-auto px-4 pt-20 relative z-10">
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-2xl font-bold text-[#1F2937]">Alerts</h1>

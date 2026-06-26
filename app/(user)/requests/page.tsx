@@ -30,11 +30,11 @@ const bookings = [
 
 export default function RequestsPage() {
   return (
-    <main className="min-h-screen bg-[#F8F9FB] pb-32">
+    <main className="min-h-screen bg-[#F8F9FB] pb-24">
 
       <TopNavbar />
 
-      <section className="mx-auto max-w-md px-4 pt-24">
+      <section className="mx-auto max-w-md px-4 pt-20">
 
         {/* Header */}
 
@@ -48,7 +48,7 @@ export default function RequestsPage() {
             y: 0,
           }}
         >
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-2xl font-bold text-slate-900">
             My Bookings
           </h1>
 

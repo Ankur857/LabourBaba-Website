@@ -51,8 +51,8 @@ export default function SignupPage() {
                             className="mx-auto w-[75%] max-w-70 h-auto"
                         />
 
-                        <p className="mt-3 text-[#6B4F3F] text-lg tracking-wide">
-                            Find &nbsp; Book &nbsp; Build
+                        <p className="mt-3 text-[#6B7280] text-lg tracking-wide">
+                            Find &amp; Book &amp; Build
                         </p>
                     </div>
 
@@ -63,7 +63,7 @@ export default function SignupPage() {
                         <div className="border border-[#F2B8A0] rounded-xl h-14 flex items-center px-4 bg-white">
                             <User
                                 size={20}
-                                className="text-[#6B4F3F]"
+                                className="text-[#6B7280]"
                             />
 
                             <input
@@ -91,7 +91,7 @@ export default function SignupPage() {
                         <div className="border border-[#F2B8A0] rounded-xl h-14 flex items-center px-4 bg-white">
                             <Mail
                                 size={20}
-                                className="text-[#6B4F3F]"
+                                className="text-[#6B7280]"
                             />
 
                             <input
@@ -105,7 +105,7 @@ export default function SignupPage() {
                         <div className="border border-[#F2B8A0] rounded-xl h-14 flex items-center px-4 bg-white">
                             <Building2
                                 size={20}
-                                className="text-[#6B4F3F]"
+                                className="text-[#6B7280]"
                             />
 
                             <select className="flex-1 ml-3 outline-none bg-transparent text-gray-600">
@@ -126,13 +126,13 @@ export default function SignupPage() {
                         <div className="flex items-start gap-3">
                             <input
                                 type="checkbox"
-                                className="mt-1 w-5 h-5 accent-orange-500"
+                                className="mt-1 w-6 h-6 accent-orange-500"
                             />
 
-                            <p className="text-sm text-[#5A463A] leading-5">
+                            <p className="text-sm text-[#6B7280] leading-5">
                                 By signing up, you agree to our{" "}
                                 <span className="text-orange-500 underline font-medium">
-                                    Terms & Conditions
+                                    Terms &amp; Conditions
                                 </span>{" "}
                                 and{" "}
                                 <span className="text-orange-500 underline font-medium">
@@ -160,14 +160,14 @@ export default function SignupPage() {
               hover:bg-orange-600
               transition
             "
-                        onClick={() => router.push("/otp")}
+                            onClick={() => router.push("/otp")}
                         >
                             Create Account
                             <ArrowRight size={22} />
                         </button>
 
                         {/* Login */}
-                        <p className="text-center text-[#5A463A] text-lg pt-5">
+                        <p className="text-center text-[#6B7280] text-lg pt-5">
                             Already have an account?{" "}
                             <Link
                                 href="/login"

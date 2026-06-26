@@ -78,7 +78,7 @@ export default function OtpPage() {
               className="w-[75vw] max-w-70 h-auto mx-auto"
             />
 
-            <p className="mt-3 text-[#5F4B42] text-lg tracking-wide">
+            <p className="mt-3 text-[#6B7280] text-lg tracking-wide">
               Find&nbsp;&nbsp; Book&nbsp;&nbsp; Build
             </p>
           </div>
@@ -88,7 +88,7 @@ export default function OtpPage() {
             Verify Your Number
           </h2>
 
-          <p className="mt-4 text-center text-[#667085] text-base">
+          <p className="mt-4 text-center text-[#6B7280] text-base">
             We have sent a 6-digit code to
           </p>
 
@@ -140,7 +140,7 @@ export default function OtpPage() {
 
           {/* Resend */}
           <div className="mt-12 text-center">
-            <p className="text-[#667085] text-base">
+            <p className="text-[#6B7280] text-base">
               Didn't receive the code?
             </p>
 
@@ -169,7 +169,7 @@ export default function OtpPage() {
               hover:bg-orange-600
               transition
             "
-            onClick={() => router.replace("/Home")}
+            onClick={() => router.replace("/home")}
           >
             Verify & Proceed
             <ArrowRight size={22} />
@@ -179,8 +179,7 @@ export default function OtpPage() {
         {/* Footer */}
         <div className="relative z-10 px-6 pb-6 mt-auto">
           <p className="text-center text-xs text-[#98A2B3] leading-6">
-            By continuing, you agree to our Terms of
-            Service
+            By continuing, you agree to our Terms of Service
             <br />
             and Privacy Policy.
           </p>

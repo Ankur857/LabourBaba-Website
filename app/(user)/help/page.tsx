@@ -64,7 +64,7 @@ export default function HelpPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-[#F8F9FB] pb-28 relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8F9FB] pb-24 relative overflow-hidden">
 
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400/10 blur-[120px] rounded-full" />
@@ -80,7 +80,7 @@ export default function HelpPage() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-4xl font-bold text-[#1F2937]">
+          <h1 className="text-3xl font-bold text-[#1F2937]">
             Frequently Asked Questions
           </h1>
         </motion.div>
@@ -164,7 +164,7 @@ export default function HelpPage() {
           transition={{ delay: 0.4 }}
           className="mt-10"
         >
-          <h2 className="text-4xl font-bold text-[#1F2937]">
+          <h2 className="text-3xl font-bold text-[#1F2937]">
             Need More Help?
           </h2>
 
@@ -188,7 +188,7 @@ export default function HelpPage() {
                 Call Us
               </h3>
 
-              <p className="mt-2 text-[#5F4B42] font-medium">
+              <p className="mt-2 text-[#6B7280] font-medium">
                 Available 24/7
               </p>
             </motion.a>
@@ -211,7 +211,7 @@ export default function HelpPage() {
                 Email Support
               </h3>
 
-              <p className="mt-2 text-[#5F4B42] font-medium">
+              <p className="mt-2 text-[#6B7280] font-medium">
                 Response within 24h
               </p>
             </motion.a>

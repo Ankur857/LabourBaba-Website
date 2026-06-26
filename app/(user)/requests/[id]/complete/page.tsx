@@ -52,7 +52,7 @@ export default function JobCompletedPage() {
             </div>
           </div>
 
-          <h2 className="mt-4 text-4xl font-semibold text-gray-900">
+          <h2 className="mt-4 text-3xl font-semibold text-gray-900">
             Rajesh Kumar
           </h2>
 

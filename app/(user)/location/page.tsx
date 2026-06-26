@@ -26,7 +26,7 @@ export default function LocationPage() {
         {/* Heading */}
         <div className="mb-6">
 
-          <h1 className="text-3xl font-bold text-[#1F2937]">
+          <h1 className="text-2xl font-bold text-[#1F2937]">
             Choose Your Location
           </h1>
 
