@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function BottomCTA() {
+  const router = useRouter();
   return (
 
     <motion.div
@@ -25,7 +27,9 @@ export default function BottomCTA() {
 
       whileTap={{scale:.95}}
 
-      className="w-full bg-orange-500 text-white py-4 rounded-xl shadow-2xl font-bold text-lg">
+      className="w-full bg-orange-500 text-white py-4 rounded-xl shadow-2xl font-bold text-lg"
+      onClick={() => router.push("/login")}
+      >
 
         Book a Worker
 

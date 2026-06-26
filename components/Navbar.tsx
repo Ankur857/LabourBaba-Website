@@ -1,10 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Navbar() {
+  const router = useRouter();
   return (
     <motion.nav
       initial={{ y: -70, opacity: 0 }}
@@ -72,7 +75,7 @@ export default function Navbar() {
             className="absolute inset-y-0 left-0 w-8 -skew-x-12 bg-white/40"
           />
 
-          <span className="relative flex items-center gap-2">
+          <span className="relative flex items-center gap-2" onClick={() => router.push("/login")}>
             Login
 
             <motion.div
