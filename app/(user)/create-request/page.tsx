@@ -10,12 +10,17 @@ import {
 import TopBar from "@/components/CommonHeader";
 import WorkerCard from "@/components/CreateRequest/WorkerCard";
 import RateInput from "@/components/CreateRequest/RateInput";
-import { createJob } from "@/lib/api/job";
+import { createJob, addJobRequirement } from "@/lib/api/job";
+import { useRouter } from "next/navigation";
+
 export default function NewRequestPage() {
+  const router = useRouter();
   const [masonCount, setMasonCount] = useState(0);
   const [labourCount, setLabourCount] = useState(0);
   const [masonRate, setMasonRate] = useState("");
   const [labourRate, setLabourRate] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const masonPrice = Number(masonRate || 0);
   const labourPrice = Number(labourRate || 0);
   const totalWorkers = masonCount + labourCount;
@@ -25,23 +30,74 @@ export default function NewRequestPage() {
   const [savedLocation, setSavedLocation] = useState<SavedLocationData | null>(
     null,
   );
+
   const findWorkers = async () => {
-    const data = {
-      masonCount,
-      labourCount,
-      masonRate,
-      labourRate,
-      longitude: savedLocation?.longitude,
-      latitude: savedLocation?.latitude,
-      location: savedLocation?.address,
-      
-    };
-    await createJob(data);
+    // Validate inputs
+    if (!savedLocation) {
+      setError("Please select a location");
+      return;
+    }
+    if (totalWorkers === 0) {
+      setError("Please select at least one worker type");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      // Step 1: Create the initial job
+      const jobData = await createJob({
+        latitude: savedLocation.latitude,
+        longitude: savedLocation.longitude,
+        location: savedLocation.address || "",
+        requirements: [
+          ...(masonCount > 0 ? [{
+            skill_type: "Mason",
+            worker_count_needed: masonCount,
+            rate_per_day: masonPrice,
+          }] : []),
+          ...(labourCount > 0 ? [{
+            skill_type: "Labour",
+            worker_count_needed: labourCount,
+            rate_per_day: labourPrice,
+          }] : [])
+        ]
+      });
+
+      // Step 2: Add requirements for each worker type
+      // const jobId = jobData.id;
+      // if (masonCount > 0) {
+      //   await addJobRequirement(jobId, {
+      //     skill_type: "Mason",
+      //     worker_count_needed: masonCount,
+      //     rate_per_day: masonPrice,
+      //     wave_size: 10,
+      //   });
+      // }
+      // if (labourCount > 0) {
+      //   await addJobRequirement(jobId, {
+      //     skill_type: "Labour",
+      //     worker_count_needed: labourCount,
+      //     rate_per_day: labourPrice,
+      //     wave_size: 10,
+      //   });
+      // }
+
+      // Navigate to requests page on success
+      router.push("/requests");
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to create request");
+    } finally {
+      setLoading(false);
+    }
   };
+
   useEffect(() => {
     const stored = getSavedLocation();
     setSavedLocation(stored);
   }, []);
+
   const [displayTotal, setDisplayTotal] = useState(0);
   useEffect(() => {
     const controls = animate(displayTotal, totalPrice, {
@@ -53,10 +109,16 @@ export default function NewRequestPage() {
 
     return () => controls.stop();
   }, [totalPrice]);
+
   return (
     <main className="min-h-screen bg-[#FAFAFA] pb-40">
       <TopBar title={"Create Request"} />
       <div className="max-w-md mx-auto px-4 py-6 space-y-6">
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl">
+            {error}
+          </div>
+        )}
         {/* Mason */}
         <WorkerCard
           title="Mason"
@@ -219,29 +281,6 @@ export default function NewRequestPage() {
                 ₹{displayTotal.toLocaleString()}
               </motion.span>
             </div>
-
-            {/* <motion.div
-            animate={{
-              rotate: [0, 8, -8, 0],
-              scale: [1, 1.08, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-            className="
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              rounded-full
-              bg-orange-100
-              text-xl
-            "
-          >
-            💰
-          </motion.div> */}
           </div>
           {/* CTA */}
           <motion.button
@@ -264,6 +303,8 @@ export default function NewRequestPage() {
                 repeat: Infinity,
               },
             }}
+            onClick={findWorkers}
+            disabled={loading}
             className="
             relative
             w-full
@@ -275,6 +316,7 @@ export default function NewRequestPage() {
             font-semibold
             text-white
             shadow-lg
+            disabled:opacity-50
           "
           >
             {/* Shine */}
@@ -295,18 +337,20 @@ export default function NewRequestPage() {
             "
             />
             <span className="relative flex items-center justify-center gap-2">
-              Find Workers Now
-              <motion.div
-                animate={{
-                  x: [0, 4, 0],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                }}
-              >
-                <ArrowRight size={18} />
-              </motion.div>
+              {loading ? "Creating Request..." : "Find Workers Now"}
+              {!loading && (
+                <motion.div
+                  animate={{
+                    x: [0, 4, 0],
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                  }}
+                >
+                  <ArrowRight size={18} />
+                </motion.div>
+              )}
             </span>
           </motion.button>
         </div>
