@@ -11,6 +11,8 @@ import TopBar from "@/components/CommonHeader";
 import WorkerCard from "@/components/CreateRequest/WorkerCard";
 import RateInput from "@/components/CreateRequest/RateInput";
 import { createJob } from "@/services/job";
+import { joinCustomerRoom } from "@/services/socket";
+import { getClientCustomerId } from "@/lib/client-cookies";
 import { useRouter } from "next/navigation";
 
 export default function NewRequestPage() {
@@ -64,6 +66,12 @@ export default function NewRequestPage() {
           }] : [])
         ]
       });
+
+      // Step 2: Join the customer room via socket.io for real-time updates
+      const customerId = jobData.customer_id || getClientCustomerId();
+      if (customerId) {
+        await joinCustomerRoom(customerId);
+      }
 
       // Step 2: Add requirements for each worker type
       // const jobId = jobData.id;

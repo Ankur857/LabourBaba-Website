@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
@@ -19,6 +19,8 @@ import TopNavbar from "@/components/TopNavbar";
 import BottomNav from "@/components/BottomNav";
 import GreetingSection from "@/components/HomePage/GreetingSection";
 import { useFCM } from "@/lib/hooks/useFCM";
+import { getSocket, joinCustomerRoom } from "@/services/socket";
+import { getClientCustomerId } from "@/lib/client-cookies";
 
 const quickActions = [
   { title: "Book Now", icon: Zap },
@@ -56,8 +58,10 @@ export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [hideNotificationBanner, setHideNotificationBanner] = useState(false);
   const { permission, requestPermission, isLoading, error, isFCMEnabled } = useFCM();
-
-  return (
+  useEffect(() => {
+    getSocket()?.connect();
+  }, []);
+   return (
     <main className="min-h-screen bg-[#F8F9FB] pb-24 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400/10 blur-[120px] rounded-full" />

@@ -25,11 +25,11 @@ interface AddRequirementRequest {
 
 interface CreateJobResponse {
   id: string;
+  customer_id: string;
   [key: string]: any;
 }
 
 async function createJob(data: CreateJobRequest): Promise<CreateJobResponse> {
-  console.log("Creating job with data:", data);
   try {
     const customerId = await getCustomerId();
     data.customer_id = customerId;
