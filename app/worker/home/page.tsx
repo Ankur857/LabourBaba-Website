@@ -9,7 +9,7 @@ import {
   type Worker,
   type Booking,
 } from "@/lib/api/worker";
-import { Home, User, Calendar, DollarSign, LogOut, MapPin, CheckCircle } from "lucide-react";
+import { Home, User, Calendar, DollarSign, LogOut, MapPin, CheckCircle, Bell } from "lucide-react";
 
 export default function WorkerHomePage() {
   const router = useRouter();
