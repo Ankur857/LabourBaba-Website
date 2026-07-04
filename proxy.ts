@@ -12,6 +12,7 @@ export function proxy(request: NextRequest) {
   );
 
   const isUserRoute = path.startsWith("/(user)") || 
+    path.startsWith("/(admin)") ||
     path.startsWith("/home") || 
     path.startsWith("/create-request") || 
     path.startsWith("/requests") || 
