@@ -7,15 +7,13 @@ import {
   Globe,
   ChevronDown,
   ArrowRight,
-  Lock,
 } from "lucide-react";
-import { clientLogin, setAuthToken, setCustomerId } from "@/lib/api/auth";
+import { sendOtp } from "@/lib/api/auth";
 
 export default function LoginCard() {
   const router = useRouter();
 
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -26,9 +24,9 @@ export default function LoginCard() {
     setPhone(value);
   };
 
-  const handleLogin = async () => {
-    if (!phone || !password) {
-      setError("Please fill in all fields");
+  const handleSendOtp = async () => {
+    if (!phone) {
+      setError("Please enter your mobile number");
       return;
     }
 
@@ -36,14 +34,16 @@ export default function LoginCard() {
     setError("");
 
     try {
-      const response = await clientLogin({
+      const response = await sendOtp({
         phone: "+91" + phone,
-        password,
+        type: "login",
       });
-      console.log("Login response:", response);
-      router.push("/home");
-    } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong");
+      console.log("OTP sent successfully:", response);
+      // Navigate to OTP page with phone number
+      router.push(`/otp?phone=%2B91${phone}`);
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -131,7 +131,7 @@ export default function LoginCard() {
           transition={{
             delay: 0.3,
           }}
-          className="relative mb-6"
+          className="relative mb-8"
         >
           <label className="absolute -top-3 left-4 bg-white px-2 text-sm font-medium text-orange-500">
             Mobile Number
@@ -165,40 +165,7 @@ export default function LoginCard() {
           </div>
         </motion.div>
 
-        {/* Password Input */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: 0.4,
-          }}
-          className="relative mb-8"
-        >
-          <label className="absolute -top-3 left-4 bg-white px-2 text-sm font-medium text-orange-500">
-            Password
-          </label>
-
-          <div className="flex h-16 overflow-hidden rounded-xl border-2 border-orange-500 transition-all duration-300 focus-within:shadow-lg focus-within:ring-4 focus-within:ring-orange-100">
-            <div className="flex w-12 items-center justify-center border-r bg-gray-50">
-              <Lock size={18} />
-            </div>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Enter your password"
-              className="flex-1 px-4 text-xl text-gray-700 outline-none"
-            />
-          </div>
-        </motion.div>
-
-        {/* Login Button */}
+        {/* Send OTP Button */}
 
         <motion.button
           whileHover={{
@@ -207,7 +174,7 @@ export default function LoginCard() {
           whileTap={{
             scale: 0.98,
           }}
-          onClick={handleLogin}
+          onClick={handleSendOtp}
           disabled={loading}
           className="relative flex h-16 w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-orange-500 text-2xl font-semibold text-white shadow-lg transition hover:bg-orange-600 disabled:opacity-50"
         >
@@ -226,7 +193,7 @@ export default function LoginCard() {
           />
 
           <span className="relative">
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Sending OTP..." : "Send OTP"}
           </span>
 
           {!loading && (

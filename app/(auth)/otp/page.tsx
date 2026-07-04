@@ -1,17 +1,35 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { verifyOtp, sendOtp } from "@/lib/api/auth";
 
-export default function OtpPage() {
+function OtpContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const phone = searchParams.get("phone");
 
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendTimer, setResendTimer] = useState(30);
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  // Start resend timer on mount
+  useEffect(() => {
+    if (resendTimer > 0) {
+      const timer = setInterval(() => {
+        setResendTimer((prev) => prev - 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [resendTimer]);
 
   const handleChange = (value: string, index: number) => {
     if (!/^\d*$/.test(value)) return;
@@ -33,6 +51,59 @@ export default function OtpPage() {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
+  };
+
+  const handleVerify = async () => {
+    const otpCode = otp.join("");
+    if (otpCode.length !== 6) {
+      setError("Please enter a 6-digit OTP");
+      return;
+    }
+
+    if (!phone) {
+      setError("Phone number missing");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await verifyOtp({
+        phone: phone,
+        otp: otpCode,
+      });
+      console.log("OTP verified successfully:", response);
+      router.replace("/home");
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleResend = async () => {
+    if (!phone) return;
+
+    setResendLoading(true);
+    setError("");
+
+    try {
+      await sendOtp({ phone, type: "login" });
+      setResendTimer(30);
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || "Failed to resend OTP");
+    } finally {
+      setResendLoading(false);
+    }
+  };
+
+  const formatResendTimer = () => {
+    const mins = Math.floor(resendTimer / 60).toString().padStart(2, "0");
+    const secs = (resendTimer % 60).toString().padStart(2, "0");
+    return `${mins}:${secs}`;
   };
 
   return (
@@ -83,8 +154,14 @@ export default function OtpPage() {
           </p>
 
           <p className="mt-1 text-lg text-[#1F2937] font-medium">
-            +91 9876543210
+            {phone || "+91 9876543210"}
           </p>
+
+          {error && (
+            <div className="mt-4 w-full max-w-sm bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl">
+              {error}
+            </div>
+          )}
 
           {/* OTP Inputs */}
           <div className="mt-10 w-full max-w-sm">
@@ -125,8 +202,12 @@ export default function OtpPage() {
           <div className="mt-12 text-center">
             <p className="text-[#6B7280] text-base">Didn't receive the code?</p>
 
-            <button className="mt-4 text-[#C05600] font-medium tracking-wide">
-              Resend in 00:30
+            <button
+              className="mt-4 text-[#C05600] font-medium tracking-wide"
+              onClick={handleResend}
+              disabled={resendTimer > 0 || resendLoading}
+            >
+              {resendLoading ? "Resending..." : resendTimer > 0 ? `Resend in ${formatResendTimer()}` : "Resend OTP"}
             </button>
           </div>
 
@@ -149,11 +230,13 @@ export default function OtpPage() {
               shadow-lg
               hover:bg-orange-600
               transition
+              disabled:opacity-50
             "
-            onClick={() => router.replace("/home")}
+            onClick={handleVerify}
+            disabled={loading}
           >
-            Verify & Proceed
-            <ArrowRight size={22} />
+            {loading ? "Verifying..." : "Verify & Proceed"}
+            {!loading && <ArrowRight size={22} />}
           </button>
         </div>
 
@@ -167,5 +250,13 @@ export default function OtpPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function OtpPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <OtpContent />
+    </Suspense>
   );
 }
