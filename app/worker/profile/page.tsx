@@ -1,19 +1,23 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, User, Phone, Briefcase, Upload, Save } from "lucide-react";
-import { getMe, updateMe, getDocuments, uploadDocument, type Worker, type WorkerDocument } from "@/lib/api/worker";
+import { ArrowLeft, User, Phone, Briefcase, Upload, Save, MapPin } from "lucide-react";
+import { getMe, updateMe, getDocuments, uploadDocument, addWorkerLocation, type Worker, type WorkerDocument } from "@/lib/api/worker";
 
 export default function WorkerProfilePage() {
   const router = useRouter();
   const [worker, setWorker] = useState<Worker | null>(null);
   const [documents, setDocuments] = useState<WorkerDocument[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [editName, setEditName] = useState("");
   const [editPhone, setEditPhone] = useState("");
   const [editSkillType, setEditSkillType] = useState("");
+  const [editLatitude, setEditLatitude] = useState("");
+  const [editLongitude, setEditLongitude] = useState("");
+  const [editLocation, setEditLocation] = useState("");
   const [error, setError] = useState("");
+  const [locationLoading, setLocationLoading] = useState(false);
 
   const loadData = async () => {
     try {
@@ -46,6 +50,33 @@ export default function WorkerProfilePage() {
     } catch (err: unknown) {
       const error = err as { response?: { data?: { message?: string } } };
       setError(error.response?.data?.message || "Failed to update profile");
+    }
+  };
+
+  const handleUpdateLocation = async () => {
+    if (!editLatitude || !editLongitude) {
+      setError("Please enter both latitude and longitude");
+      return;
+    }
+
+    setLocationLoading(true);
+    setError("");
+
+    try {
+      await addWorkerLocation({
+        worker_id: worker?.id,
+        latitude: parseFloat(editLatitude),
+        longitude: parseFloat(editLongitude),
+        location: editLocation,
+      });
+      setEditLatitude("");
+      setEditLongitude("");
+      setEditLocation("");
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || "Failed to update location");
+    } finally {
+      setLocationLoading(false);
     }
   };
 
@@ -145,6 +176,51 @@ export default function WorkerProfilePage() {
                   {worker?.verification_status || "PENDING"}
                 </span>
               </div>
+            </div>
+          </section>
+
+          {/* Location */}
+          <section className="bg-white rounded-2xl p-6 shadow-md">
+            <h3 className="text-lg font-semibold mb-4">Update Location</h3>
+            <div className="space-y-3">
+              <div className="flex items-center border border-[#F2B8A0] rounded-xl h-12 px-3">
+                <MapPin size={20} className="text-gray-500 mr-3" />
+                <input
+                  type="number"
+                  placeholder="Latitude"
+                  value={editLatitude}
+                  onChange={(e) => setEditLatitude(e.target.value)}
+                  step="0.000001"
+                  className="flex-1 outline-none text-lg"
+                />
+              </div>
+              <div className="flex items-center border border-[#F2B8A0] rounded-xl h-12 px-3">
+                <MapPin size={20} className="text-gray-500 mr-3" />
+                <input
+                  type="number"
+                  placeholder="Longitude"
+                  value={editLongitude}
+                  onChange={(e) => setEditLongitude(e.target.value)}
+                  step="0.000001"
+                  className="flex-1 outline-none text-lg"
+                />
+              </div>
+              <div className="flex items-center border border-[#F2B8A0] rounded-xl h-12 px-3">
+                <input
+                  type="text"
+                  placeholder="Address (Optional)"
+                  value={editLocation}
+                  onChange={(e) => setEditLocation(e.target.value)}
+                  className="flex-1 outline-none text-lg"
+                />
+              </div>
+              <button
+                onClick={handleUpdateLocation}
+                disabled={locationLoading}
+                className="w-full py-3 rounded-xl bg-orange-500 text-white font-semibold hover:bg-orange-600 transition disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {locationLoading ? "Updating..." : "Update Location"}
+              </button>
             </div>
           </section>
 

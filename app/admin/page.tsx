@@ -57,11 +57,19 @@ export default function AdminPage() {
   return (
     <main className="min-h-screen bg-[#F4F6F8]">
       <div className="w-full max-w-md mx-auto min-h-screen relative overflow-hidden">
-        <header className="relative z-10 h-16 bg-white shadow-md flex items-center px-4">
-          <button onClick={() => router.back()}>
-            <ArrowLeft size={24} className="text-[#FF5404]" />
+        <header className="relative z-10 h-16 bg-white shadow-md flex items-center px-4 justify-between">
+          <div className="flex items-center">
+            <button onClick={() => router.back()}>
+              <ArrowLeft size={24} className="text-[#FF5404]" />
+            </button>
+            <h1 className="ml-4 text-2xl font-bold text-[#FF5404]">Admin - Customers</h1>
+          </div>
+          <button
+            onClick={() => router.push("/admin/skills")}
+            className="text-orange-500 font-semibold"
+          >
+            Skills
           </button>
-          <h1 className="ml-4 text-2xl font-bold text-[#FF5404]">Admin - Customers</h1>
         </header>
 
         <div className="px-6 py-8 relative z-10">

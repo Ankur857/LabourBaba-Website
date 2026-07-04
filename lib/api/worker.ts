@@ -145,3 +145,13 @@ export async function getEarnings() {
   const response = await apiCall.get("/api/workers/me/earnings");
   return response.data;
 }
+
+export async function addWorkerLocation(data: {
+  worker_id?: string;
+  latitude: number;
+  longitude: number;
+  location?: string;
+}) {
+  const response = await apiCall.post("/api/worker_location/add", data);
+  return response.data;
+}
