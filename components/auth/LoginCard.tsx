@@ -46,14 +46,14 @@ export default function LoginCard() {
       
       // Store user data in auth store
       if (response?.data) {
-        const customerId = (response.data?.id as string) || "";
+        const customerId = (response.data?.id as string) || (response.customer_id as string) || "";
         const userName = (response.data?.name as string) || "";
-        const userPhone = phone;
+        const userPhone = "+91" + phone;
         
         if (customerId) {
           setUser({
             id: customerId,
-            name: userName,
+            name: userName || "User",
             phone: userPhone,
             customer_id: customerId,
           });

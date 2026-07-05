@@ -48,12 +48,14 @@ export default function SignupPage() {
     // Store user data in auth store
     const customerId = response.customer_id || (response.data?.customer_id as string) || "";
     const userId = (response.data?.id as string) || customerId;
+    const userName = (response.data?.name as string) || name;
+    const userPhone = "+91" + phone;
     
     if (customerId) {
       setUser({
         id: userId,
-        name: name,
-        phone: phone,
+        name: userName,
+        phone: userPhone,
         customer_id: customerId,
       });
     }
